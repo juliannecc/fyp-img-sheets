@@ -73,7 +73,7 @@ client.authorize(function(err, tokens){
               let row = parseInt(file.match(/(?<=_)[0-9]*/gi)[0])+2
               let cell = col+row;
               let link = `https://raw.githubusercontent.com/${owner}/${repo}/main/${file}`;
-              // console.log(sheet, cell, link)
+              console.log(sheet, cell, link)
               gsrun(client, sheet, cell, [[link]]);
             });
         });
