@@ -2,17 +2,8 @@ name: "FYP Images to Sheet"
 description: "Images to Sheet"
 
 inputs: 
-  token: 
-    description: "GitHub Token"
-    required: true
-  owner: 
-    description: "Repository Owner"
-    required: true
-  repo:
-    description: "Repository Name"
-    required: true
-  commit_id: 
-    description: "Commit ID"
+  added_files: 
+    description: "Added files"
     required: true
 
 runs: 
