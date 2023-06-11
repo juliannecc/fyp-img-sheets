@@ -25,7 +25,7 @@ function groupArr (arr){
             core.notice("Sample");
             core.info(strToArr(added_files));
             let source = ['06-05-23/Control/1.png', '06-05-23/Control/2.png', '06-05-23/-K/1.png', '06-05-23/-K/2.png', '06-05-23/-N/1.png', '06-06-23/-N/1.png'];
-            core.info(groupArr(source));
+            core.info(groupArr(JSON.stringify(source)));
         } catch (error) {
             core.setFailed(error.message);
         }
