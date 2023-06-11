@@ -14,7 +14,7 @@ const client_x509_cert_url = core.getInput('client_x509_cert_url');
 const client = new google.auth.JWT(
     client_email, 
     null, 
-    private_key, 
+    `-----BEGIN PRIVATE KEY-----\n${private_key}\n-----END PRIVATE KEY-----\n`, 
     ['https://www.googleapis.com/auth/spreadsheets']
 );
 
