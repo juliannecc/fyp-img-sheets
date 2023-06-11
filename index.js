@@ -74,7 +74,7 @@ client.authorize(function(err, tokens){
               let cell = col+row;
               let link = `https://raw.githubusercontent.com/${owner}/${repo}/main/${file}`;
               // console.log(sheet, cell, link)
-              gsrun(client, sheet, cell, [link]);
+              gsrun(client, sheet, cell, [[link]]);
             });
         });
 
