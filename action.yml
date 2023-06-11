@@ -23,6 +23,12 @@ inputs:
   spreadsheetid:
     description: "GSheets Spreadsheet ID"
     required: true
+  owner:
+    description: "Repo Owner"
+    required: true
+  repo: 
+    description: "Repo Name"
+    required: true
 
 runs: 
   using: node16
