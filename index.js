@@ -4,6 +4,7 @@ const github = require('@actions/github');
 const token = core.getInput('token');
 const octokit = github.getOctokit(token);
 
+const owner = core.getInput('owner');
 const repo = core.getInput('repo');
 const commit_id = core.getInput('commit_id');
 
