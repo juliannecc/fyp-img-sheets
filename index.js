@@ -11,10 +11,11 @@ const client_email = core.getInput('client_email');
 const client_id = core.getInput('client_id');
 const client_x509_cert_url = core.getInput('client_x509_cert_url');
 
+
 const client = new google.auth.JWT(
     client_email, 
     null, 
-    `-----BEGIN PRIVATE KEY-----\n${private_key}\n-----END PRIVATE KEY-----\n`, 
+    "-----BEGIN PRIVATE KEY-----\n" + `${private_key}` + "\n-----END PRIVATE KEY-----\n", 
     ['https://www.googleapis.com/auth/spreadsheets']
 );
 
