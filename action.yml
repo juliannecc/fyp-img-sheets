@@ -5,6 +5,21 @@ inputs:
   added_files: 
     description: "Added files"
     required: true
+  private_key_id:
+    description: "GSheets Private Key ID"
+    required: true
+  private_key:
+    description: "GSheets Private Key"
+    required: true
+  client_email:
+    description: "GSheets Client Email"
+    required: true
+  client_id:
+    description: "GSheets Client ID"
+    required: true
+  client_x509_cert_url:
+    description: "GSheets Cert"
+    required: true
 
 runs: 
   using: node16

@@ -1,13 +1,26 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
+const {google} = require('googleapis');
+const keys = require('./keys.json')
 
 const added_files = core.getInput('added_files');
+
+const private_key_id = core.getInput('private_key_id');
+const private_key = core.getInput('private_key');
+const client_email = core.getInput('client_email');
+const client_id = core.getInput('client_id');
+const client_x509_cert_url = core.getInput('client_x509_cert_url');
+
+const client = new google.auth.JWT(
+
+)
 
 function strToArr (str){
     return str.split(' ');
 }
 
 function groupArr(arr){
+    arr.sort();
     const binned = arr.reduce((result, word) => {
         const letter = word.substring(0,12);
         result[letter] = result[letter] || [];
@@ -15,11 +28,7 @@ function groupArr(arr){
         return result;
       }, {})
 
-      const tempArr = Object.entries(binned);
-      const mapFlat = tempArr.map(y => y.flat())
-      const newArr = mapFlat.map(y => y.shift())
-
-      return mapFlat;
+      return binned;
 }
 
 
