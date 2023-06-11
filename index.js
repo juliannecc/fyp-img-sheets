@@ -27,7 +27,10 @@ async function getCommit(owner, repo, commit_id){
     async () => {
         try {
             core.notice("Sample");
-            core.info(getCommit(owner, repo, commit_id));
+            const commitOutput = getCommit(owner, repo, commit_id);
+            commitOutput.then((response) => {
+                core.info(response.data);
+            })
         } catch (error) {
             core.setFailed(error.message);
         }
