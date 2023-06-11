@@ -4,7 +4,7 @@ const github = require('@actions/github');
 const added_files = core.getInput('added_files');
 const levenshtein = require('fast-levenshtein'); 
 
-const levenshteinFilter = (source, maximum = 5) => {
+const levenshteinFilter = (source, maximum = 3) => {
   let _source, matches, x, y;
   _source = source.slice();
   matches = [];
