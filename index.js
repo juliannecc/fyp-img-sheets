@@ -36,6 +36,7 @@ function strToArr (str){
             let source = ['06-05-23/Control/1.png', '06-05-23/Control/2.png', '06-05-23/-K/1.png', '06-05-23/-K/2.png', '06-05-23/-N/1.png', '06-06-23/-N/1.png'];
             let output = levenshteinFilter(source);
             core.info(output);
+            console.log(JSON.stringify(output));
 
         } catch (error) {
             core.setFailed(error.message);
