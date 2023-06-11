@@ -7,7 +7,7 @@ function strToArr (str){
     return str.split(' ');
 }
 
-function groupArr (arr){
+function groupArr(arr){
     const binned = arr.reduce((result, word) => {
         const letter = word.substring(0,12);
         result[letter] = result[letter] || [];
@@ -25,7 +25,7 @@ function groupArr (arr){
             core.notice("Sample");
             core.info(strToArr(added_files));
             let source = ['06-05-23/Control/1.png', '06-05-23/Control/2.png', '06-05-23/-K/1.png', '06-05-23/-K/2.png', '06-05-23/-N/1.png', '06-06-23/-N/1.png'];
-            core.info(groupArr(JSON.stringify(source)));
+            core.info(JSON.stringify(groupArr(source)));
         } catch (error) {
             core.setFailed(error.message);
         }
