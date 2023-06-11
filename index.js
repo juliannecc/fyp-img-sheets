@@ -15,14 +15,16 @@ const spreadsheetid = core.getInput('spreadsheetid');
 const owner = core.getInput('owner');
 const repo = core.getInput('repo');
 
+// Converts the given string to an array
 function strToArr (str){
     return str.split(' ');
 }
 
+// Groups the given array based on similarity
 function groupArr(arr){
     arr.sort();
     const binned = arr.reduce((result, word) => {
-        const letter = word.substring(0,14);
+        const letter = word.substring(0,12);
         result[letter] = result[letter] || [];
         result[letter].push(word);
         return result;
@@ -38,6 +40,7 @@ const chars =
       'P', 'Q', 'R', 'S', 'T',
       'U', 'V', 'W', 'X', 'Y', 'Z'];
 
+// Returns the "Excel Column" equivalent of a number
 const numberToExcelHeader = (index) => {
   index -= 1;
 
@@ -56,8 +59,9 @@ const client = new google.auth.JWT(
     ['https://www.googleapis.com/auth/spreadsheets']
 );
 
-client.authorize(function(err, tokens){
+//-- Google Sheets API --//
 
+client.authorize(function(err, tokens){
     if(err){
         core.error(err);
         return
@@ -76,11 +80,8 @@ client.authorize(function(err, tokens){
                 console.log(sheet, cell, link)
                 gsrun(client, sheet, cell, [[link]]);
             });
-        });
-
-        
+        });        
     }
-
 });
 
 async function gsrun(cl, sheet, cell, link){
@@ -94,18 +95,4 @@ async function gsrun(cl, sheet, cell, link){
 
     let response = await gsapi.spreadsheets.values.update(updateOptions);
     core.info(JSON.stringify(response));
-
 }
-
-// (
-//     async () => {
-//         try {
-//             core.notice("Sample");
-//             core.info(strToArr(added_files));
-//             let source = ['06-05-23/Control/1.png', '06-05-23/Control/2.png', '06-05-23/-K/1.png', '06-05-23/-K/2.png', '06-05-23/-N/1.png', '06-06-23/-N/1.png'];
-//             core.info(JSON.stringify(groupArr(source)));
-//         } catch (error) {
-//             core.setFailed(error.message);
-//         }
-//     }
-// )();
