@@ -15,9 +15,11 @@ function groupArr(arr){
         return result;
       }, {})
 
-      const newArr = Object.entries(binned);
-      const map = newArr.map(y => y.shift());
-      return newArr;
+      const tempArr = Object.entries(binned);
+      const mapFlat = tempArr.map(y => y.flat())
+      const newArr = mapFlat.map(y => y.shift())
+
+      return mapFlat;
 }
 
 
