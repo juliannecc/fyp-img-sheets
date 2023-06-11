@@ -10,6 +10,7 @@ const private_key = core.getInput('private_key');
 const client_email = core.getInput('client_email');
 const client_id = core.getInput('client_id');
 const client_x509_cert_url = core.getInput('client_x509_cert_url');
+const spreadsheetid = core.getInput('spreadsheetid');
 
 
 const client = new google.auth.JWT(
@@ -26,9 +27,22 @@ client.authorize(function(err, tokens){
         return
     } else {
         core.info("Connected");
+        gsrun(client);
     }
 
 });
+
+async function gsrun(cl){
+    const gsapi = google.sheets({version:'v4', auth:cl});
+    const opt = {
+        spreadsheetId: `${spreadsheetid}`,
+        range: 'control!B3:C4'
+    };
+
+    let data = await gsapi.spreadsheets.values.get(opt);
+    core.info(data);
+
+}
 
 function strToArr (str){
     return str.split(' ');

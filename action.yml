@@ -20,6 +20,9 @@ inputs:
   client_x509_cert_url:
     description: "GSheets Cert"
     required: true
+  spreadsheetid:
+    description: "GSheets Spreadsheet ID"
+    required: true
 
 runs: 
   using: node16
