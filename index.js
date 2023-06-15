@@ -24,7 +24,7 @@ function strToArr (str){
 function groupArr(arr){
     arr.sort();
     const binned = arr.reduce((result, word) => {
-        const letter = word.substring(0,12);
+        const letter = word.substring(0,16);
         result[letter] = result[letter] || [];
         result[letter].push(word);
         return result;
