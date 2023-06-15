@@ -71,16 +71,16 @@ client.authorize(function(err, tokens){
         const fileObj  = groupArr(strToArr(added_files));
         let fileList = Object.keys(fileObj);
         fileList.forEach((folder) => {
-            let sheet = folder.split("/")[1];
+            let sheet = folder.split("/")[1] + "-" + folder.split("/")[2]  ;
             let col = numberToExcelHeader(parseInt(folder.split("/")[0].split("-")[1])-3);
             fileObj[folder].forEach((file) => {
                 let row = parseInt(file.match(/(?<=_)[0-9]*/gi)[0])+2
                 let cell = col+row;
                 let link = `=Image("https://raw.githubusercontent.com/${owner}/${repo}/main/${file}")`;
-                console.log(sheet, cell, link)
+                console.log(sheet, cell, link )
                 gsrun(client, sheet, cell, [[link]]);
             });
-        });        
+        });       
     }
 });
 
